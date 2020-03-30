@@ -267,7 +267,6 @@ const Point3& Pose3::translation(OptionalJacobian<3, 6> H) const {
 }
 
 /* ************************************************************************* */
-
 const Rot3& Pose3::rotation(OptionalJacobian<3, 6> H) const {
   if (H) {
     *H << I_3x3, Z_3x3;

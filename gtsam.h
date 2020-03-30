@@ -777,6 +777,9 @@ class Pose3 {
   gtsam::Point3 transformFrom(const gtsam::Point3& point) const;
   gtsam::Point3 transformTo(const gtsam::Point3& point) const;
 
+  // Action on Point3Pair
+  gtsam::Pose3 Align(const Vector& point_pairs);
+
   // Standard Interface
   gtsam::Rot3 rotation() const;
   gtsam::Point3 translation() const;

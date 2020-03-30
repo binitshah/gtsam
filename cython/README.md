@@ -15,9 +15,17 @@ This is the Cython/Python wrapper around the GTSAM C++ library.
 - For compatibility with gtsam's Eigen version, it contains its own cloned version of [Eigency](https://github.com/wouterboomsma/eigency.git),
 named **gtsam_eigency**, to interface between C++'s Eigen and Python's numpy.
 
-- Build and install gtsam using cmake with `GTSAM_INSTALL_CYTHON_TOOLBOX` enabled.
+- Build and install gtsam using cmake with `GTSAM_INSTALL_CYTHON_TOOLBOX` enabled and `GTSAM_ALLOW_DEPRECATED_SINCE_V4` disabled.
 The wrapped module will be installed to `GTSAM_CYTHON_INSTALL_PATH`, which is
 by default: `<your CMAKE_INSTALL_PREFIX>/cython`
+
+```bash
+ mkdir build/
+ cd build/
+ cmake .. -D GTSAM_BUILD_EXAMPLES_ALWAYS=OFF -D GTSAM_INSTALL_CYTHON_TOOLBOX=ON -D GTSAM_ROT3_EXPMAP=ON -D GTSAM_ALLOW_DEPRECATED_SINCE_V4=OFF
+```
+
+The default CMAKE_INSTALL_PREFIX installs gtsam system-wide. Use `-D CMAKE_INSTALL_PREFIX="./install"` to install to the build folder. Use `-D CMAKE_INSTALL_PREFIX=$(python3 -c "import sys; print(sys.prefix)")` to install to a conda env.
 
 - To use the library without installing system-wide: modify your `PYTHONPATH` to include the `GTSAM_CYTHON_INSTALL_PATH`:
 ```bash
